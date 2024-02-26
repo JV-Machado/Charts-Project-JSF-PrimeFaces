@@ -1,0 +1,96 @@
+INSERT INTO tb_gameconsole (id, name, release_year, units_sold) values (1, 'Playstation 1', 1994, 102490000);
+INSERT INTO tb_gameconsole (id, name, release_year, units_sold) values (2, 'Playstation 2', 2000, 155000000);
+INSERT INTO tb_gameconsole (id, name, release_year, units_sold) values (3, 'Nintendo Ds', 2004, 154020000);
+INSERT INTO tb_gameconsole (id, name, release_year, units_sold) values (4, 'SNES', 1990, 49100000);
+INSERT INTO tb_gameconsole (id, name, release_year, units_sold) values (5, 'GBA', 2001, 81510000);
+INSERT INTO tb_gameconsole (id, name, release_year, units_sold) values (6, 'Nintendo 3Ds', 2011, 75940000);
+
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(1, 'Digimon World 1', 'RPG', 1999, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(2, 'Digimon World 2', 'RPG', 2000, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(3, 'Digimon World 3', 'RPG', 2002, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(4, 'Gran Turismo', 'Corrida', 1997, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(5, 'Gran Turismo 2', 'Corrida', 1999, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(6, 'Final Fantasy VII', 'RPG', 1997, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(7, 'Final Fantasy VIII', 'RPG', 1999, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(8, 'Tekken 3', 'Luta', 1998, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(9, 'Crash Bandicoot', 'Plataforma',1996, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(10, 'Crash Bandicoot 2: Cortex Strikes Back', 'Plataforma', 1997, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(11, 'Crash Bandicoot: Warped', 'Plataforma', 1998, 1);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(12, 'Resident Evil', 'Survival Horror', 1996, 1);
+
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(13, 'Black', 'FPS', 2006, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(14, 'Resident Evil 4', 'Ação', 2005, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(15, 'Grand Theft Auto III', 'Ação', 2001, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(16, 'Grand Theft Auto: Vice City', 'Ação', 2002, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(17, 'Grand Theft Auto: San Andreas', 'Ação', 2004, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(18, 'Gran Turismo 3: A-Spec', 'Corrida', 2001, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(19, 'Gran Turismo 4', 'Corrida', 2004, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(20, 'Final Fantasy X', 'RPG', 2001, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(21, 'Final Fantasy XII', 'RPG', 2006, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(22, 'Tekken 5', 'Luta', 2005, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(23, 'God of War', 'Ação', 2005, 2);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(24, 'God of War II', 'Ação', 2007, 2);
+
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(25, 'Castlevania: Portrait of Ruin', 'Metroidvania', 2006, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(26, 'Castlevania: Order of Ecclesia', 'Metroidvania', 2008, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(27, 'New Super Mario Bros', 'Plataforma', 2006, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(28, 'Pokémon Diamond Version', 'RPG', 2006, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(29, 'Pokémon Pearl Version', 'RPG', 2006, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(30, 'Pokémon Platinum Versions', 'RPG', 2008, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(31, 'Super Mario 64 DS', 'Plataforma', 2004, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(32, 'Mario & Luigi: Bowsers Inside Story', 'RPG', 2009, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(33, 'Mario Kart Ds', 'Corrida', 2005, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(34, 'The Legend of Zelda: Phantom Hourglass', 'Ação e Aventura', 2007, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(35, 'The Legend of Zelda: Spirit Tracks', 'Ação e Aventura', 2009, 3);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(36, 'Final Fantasy Tactics Advance 2: Grimoire of The Rift', 'RPG', 2007, 3);
+
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(37, 'Super Punch Out!!', 'Luta', 1994, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(38, 'Super Mario World', 'Plataforma', 1990, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(39, 'Donkey Kong Country', 'Plataforma', 1994, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(40, 'Super Mario Kart', 'Corrida', 1992, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(41, 'Street Fighter II: The World Warrior', 'Luta', 1992, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(42, 'Donkey Kong Country 2: Diddys Kong Quest', 'Plataforma', 1995, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(43, 'The Legend of Zelda: A Link to the Past', 'Ação e Aventura', 1991, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(44, 'Super Mario World 2: Yoshis Island', 'Plataforma', 1995, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(45, 'Final Fantasy VI', 'RPG', 1994, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(46, 'F-Zero', 'Corrida', 1990, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(47, 'Dragon Quest VI', 'RPG', 1995, 4);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(48, 'Mega Man X', 'Plataforma', 1993, 4);
+
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(49, 'Pokémon Emerald Version', 'RPG', 2004, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(50, 'Pokémon Ruby Version', 'RPG', 2002, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(51, 'Pokémon Sapphire Version', 'RPG', 2002, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(52, 'Pokémon FireRed Version', 'RPG', 2004, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(53, 'Pokémon LeafGreen Version', 'RPG', 2004, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(54, 'Mario Kart: Super Circuit', 'Corrida', 2001, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(55, 'Super Mario World: Super Mario Advance 2', 'Plataforma', 2001, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(56, 'Final Fantasy Tactics Advance', 'RPG', 2003, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(57, 'Wario Land 4', 'Plataforma', 2001, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(58, 'Mario vs. Donkey Kong', 'Plataforma', 2004, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(59, 'F-Zero: Maximum Velocity', 'Corrida', 2001, 5);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(60, 'The Legend of Zelda: The Minish Cap', 'Ação e Aventura', 2004, 5);
+
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(61, 'Mario Kart 7', 'Corrida', 2011, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(62, 'Bravely Default', 'RPG', 2012, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(63, 'Super Mario 3D Land ', 'Plataforma', 2011, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(64, 'Yo-kai Watch 2', 'RPG', 2014, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(65, 'Luigis Mansion: Dark Moon', 'Ação e Aventura', 2013, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(66, 'The Legend of Zelda: A Link Between Worlds', 'Ação e Aventura', 2013, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(67, 'Fire Emblem Awakening', 'Tactical RPG', 2012, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(68, 'Fire Emblem Fates: Birthright and Conquest', 'Tactical RPG', 2015, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(69, 'Fire Emblem Echoes: Shadows of Valentia', 'Tactical RPG', 2017, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(70, 'Mario & Luigi: Dream Team', 'RPG', 2013, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(71, 'Pokémon X', 'RPG', 2013, 6);
+INSERT INTO tb_game (id, name, game_genre, release_year, game_console_id) values(72, 'Pokémon Moon', 'RPG', 2016, 6);
+
+
+--INSERT INTO tb_console_game (console_id, game_id) values(1, 1);
+--INSERT INTO tb_console_game (console_id, game_id) values(1, 2);
+--INSERT INTO tb_console_game (console_id, game_id) values(1, 3);
+--INSERT INTO tb_console_game (console_id, game_id) values(2, 9);
+--INSERT INTO tb_console_game (console_id, game_id) values(2, 10);
+--INSERT INTO tb_console_game (console_id, game_id) values(3, 4);
+--INSERT INTO tb_console_game (console_id, game_id) values(3, 5);
+--INSERT INTO tb_console_game (console_id, game_id) values(4, 8);
+--INSERT INTO tb_console_game (console_id, game_id) values(5, 6);
+--INSERT INTO tb_console_game (console_id, game_id) values(6, 7);
