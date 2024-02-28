@@ -32,13 +32,19 @@
 						class="ui-icon fa fa-ellipsis-v" />
 					</span>
 
-					<p:commandButton value="Consoles" icon="fa fa-bar-chart-o" oncomplete="PrimeFaces.widgets.consoleDialogWidgetVar.show()" update="consoleDialog"
+					<p:commandButton value="Unidades Vendidas (Consoles)" icon="fa fa-bar-chart-o" oncomplete="PrimeFaces.widgets.consoleDialogWidgetVar.show()" update="consoleDialog"
 					/>
 					<span class="ui-separator"> <span
 						class="ui-icon fa fa-ellipsis-v" />
 					</span>
 
-					<p:commandButton value="Jogos" icon="fa fa-pie-chart" oncomplete="PrimeFaces.widgets.gameDialogWidgetVar.show()" update="gameDialog"/>
+					<p:commandButton value="Nº de Gêneros por Console" icon="fa fa-pie-chart" oncomplete="PrimeFaces.widgets.gameDialogWidgetVar.show()" update="gameDialog"/>
+					
+					<span class="ui-separator"> <span
+						class="ui-icon fa fa-ellipsis-v" />
+					</span>
+					
+					<p:commandButton value="Unidades Vendidas (Jogos)" icon="fa fa-bar-chart-o" oncomplete="PrimeFaces.widgets.gameUnitsSoldDialogWidgetVar.show()" update="gameUnitsSoldDialog"/>
 				</f:facet>
 			</p:toolbar>
 
@@ -61,7 +67,7 @@
 				</p:column>
 			</p:dataTable>
 			
-			<p:dialog id="consoleDialog" header="Gráficos para Consoles" widgetVar="consoleDialogWidgetVar" modal="true" closeOnEscape="true" resizable="false">
+			<p:dialog id="consoleDialog" header="Gráficos de Unidades Vendidas de Consoles" widgetVar="consoleDialogWidgetVar" modal="true" closeOnEscape="true" resizable="false">
 				<h:panelGrid columns="2">
 					<p:commandButton value="Gráfico de Pizza" icon="fa fa-pie-chart" action="#{chartBean.chartOption('consolePieChart')}" update="charts"/>
 					<p:commandButton value="Gráfico de Barras" icon="fa fa-bar-chart-o" action="#{chartBean.chartOption('consoleBarChart')}" update="charts"/>
@@ -78,11 +84,11 @@
 				</p:outputPanel>
 			</p:dialog>
 			
-			<p:dialog id="gameDialog" header="Gráficos para Jogos" widgetVar="gameDialogWidgetVar" modal="true" closeOnEscape="true" resizable="false">
+			<p:dialog id="gameDialog" header="Gráficos de Quantidade de Gêneros de Jogos por Console" widgetVar="gameDialogWidgetVar" modal="true" closeOnEscape="true" resizable="false">
 				<h:panelGrid columns="2">
   
 					<p:outputLabel value="Selecione o console: "/>
-					<p:selectOneMenu value="#{chartBean.selectedChartOptionGame}">
+					<p:selectOneMenu value="#{chartBean.selectedChartOptionGameGenre}">
 						<f:selectItem itemLabel="Selecione..."/>
 						<f:selectItems value="#{chartBean.listConsoles}" var="console" itemLabel="#{console.name}" itemValue="#{console.name}"/>
 						<p:ajax update="genreCharts" process="@this"/>
@@ -114,6 +120,46 @@
 							<p:chart type="bar" model="#{chartBean.bar3DSChart}" style="width:600px;height:300px;"/>
 						</p:panel>
 					</p:outputPanel>
+			</p:dialog>
+			
+			<p:dialog id="gameUnitsSoldDialog" header="Gráficos de Unidades de Jogos Vendidas por Console" widgetVar="gameUnitsSoldDialogWidgetVar" modal="true" closeOnEscape="true" resizable="false">
+			
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Selecione o Console: "/>
+					<p:selectOneMenu value="#{chartBean.selectedChartOptionGameUnitsSold}">
+						<f:selectItem itemLabel="Selecione..."/>
+						<f:selectItems value="#{chartBean.listConsoles}" var="console" itemLabel="#{console.name}" itemValue="#{console.name}"/>
+						<p:ajax update="gameUnitsSoldCharts" process="@this"/>
+					</p:selectOneMenu>
+				</h:panelGrid>
+			
+				<h:panelGrid>
+					<p:outputPanel id="gameUnitsSoldCharts">
+						<p:panel rendered="#{chartBean.isChartSelectedGameUnitsSold('Playstation 1')}">
+							<p:chart type="pie" model="#{chartBean.pieUnitsSoldPS1Chart}" style="width:800px;height:400px;"/>
+						</p:panel>
+						
+						<p:panel rendered="#{chartBean.isChartSelectedGameUnitsSold('Playstation 2')}">
+							<p:chart type="pie" model="#{chartBean.pieUnitsSoldPS2Chart}" style="width:800px;height:400px;"/>
+						</p:panel>
+						
+						<p:panel rendered="#{chartBean.isChartSelectedGameUnitsSold('Nintendo Ds')}">
+							<p:chart type="pie" model="#{chartBean.pieUnitsSoldDSChart}" style="width:800px;height:400px;"/>
+						</p:panel>
+						
+						<p:panel rendered="#{chartBean.isChartSelectedGameUnitsSold('GBA')}">
+							<p:chart type="pie" model="#{chartBean.pieUnitsSoldGBAChart}" style="width:800px;height:400px;"/>
+						</p:panel>
+						
+						<p:panel rendered="#{chartBean.isChartSelectedGameUnitsSold('SNES')}">
+							<p:chart type="pie" model="#{chartBean.pieUnitsSoldSNESChart}" style="width:800px;height:400px;"/>
+						</p:panel>
+						
+						<p:panel rendered="#{chartBean.isChartSelectedGameUnitsSold('Nintendo 3Ds')}">
+							<p:chart type="pie" model="#{chartBean.pieUnitsSold3DSChart}" style="widtpie00px;height:400px;"/>
+						</p:panel>
+					</p:outputPanel>
+				</h:panelGrid>
 			</p:dialog>
 		</h:form>
 	</div>

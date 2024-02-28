@@ -29,6 +29,8 @@ public class Game implements Serializable{
 	@Column(name="release_year")
 	private Integer releaseYear;
 	
+	@Column(name="units_sold")
+	private Integer unitsSold;
 //	@ManyToMany
 //	@JoinTable(name="tb_console_game", 
 //		joinColumns = @JoinColumn(name="game_id"), 
@@ -73,6 +75,14 @@ public class Game implements Serializable{
 
 	public void setReleaseYear(Integer releaseYear) {
 		this.releaseYear = releaseYear;
+	}
+
+	public Integer getUnitsSold() {
+		return unitsSold;
+	}
+
+	public void setUnitsSold(Integer unitsSold) {
+		this.unitsSold = unitsSold;
 	}
 
 	public GameConsole getGameConsole() {

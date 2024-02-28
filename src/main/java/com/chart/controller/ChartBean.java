@@ -42,8 +42,18 @@ public class ChartBean implements Serializable {
 	private BarChartModel barSNESChart = new BarChartModel();
 	private BarChartModel bar3DSChart = new BarChartModel();
 	
+	private PieChartModel pieUnitsSoldPS1Chart = new PieChartModel();
+	private PieChartModel pieUnitsSoldPS2Chart = new PieChartModel();
+	private PieChartModel pieUnitsSoldDSChart = new PieChartModel();
+	private PieChartModel pieUnitsSoldGBAChart = new PieChartModel();
+	private PieChartModel pieUnitsSoldSNESChart = new PieChartModel();
+	private PieChartModel pieUnitsSold3DSChart = new PieChartModel();
+
+	
 	private String selectedChartOption = "consolePieChart";
-	private String selectedChartOptionGame = "Playstation 1";
+	private String selectedChartOptionGameGenre = "Playstation 1";
+	private String selectedChartOptionGameUnitsSold = "Playstation 1";
+
 
 	private List<Game> listGames;
 	
@@ -58,12 +68,21 @@ public class ChartBean implements Serializable {
 		quantityGamesGenrePerConsole();
         createPieModel();
         createBarModel();
-        createBarGenderModel("Playstation 1", barPS1Chart);
-        createBarGenderModel("Playstation 2", barPS2Chart);
-        createBarGenderModel("Nintendo Ds", barDSChart);
-        createBarGenderModel("GBA", barGBAChart);
-        createBarGenderModel("SNES", barSNESChart);
-        createBarGenderModel("Nintendo 3Ds", bar3DSChart);
+        
+        createBarModelQuantityGameGenrePerConsole("Playstation 1", barPS1Chart);
+        createBarModelQuantityGameGenrePerConsole("Playstation 2", barPS2Chart);
+        createBarModelQuantityGameGenrePerConsole("Nintendo Ds", barDSChart);
+        createBarModelQuantityGameGenrePerConsole("GBA", barGBAChart);
+        createBarModelQuantityGameGenrePerConsole("SNES", barSNESChart);
+        createBarModelQuantityGameGenrePerConsole("Nintendo 3Ds", bar3DSChart);
+        
+        createPieModelGameUnitsSold("Playstation 1", pieUnitsSoldPS1Chart);
+        createPieModelGameUnitsSold("Playstation 2", pieUnitsSoldPS2Chart);
+        createPieModelGameUnitsSold("Nintendo Ds", pieUnitsSoldDSChart);
+        createPieModelGameUnitsSold("GBA", pieUnitsSoldGBAChart);
+        createPieModelGameUnitsSold("SNES", pieUnitsSoldSNESChart);
+        createPieModelGameUnitsSold("Nintendo 3Ds", pieUnitsSold3DSChart);
+
     }
 	
 	public void createPieModel() {
@@ -91,7 +110,7 @@ public class ChartBean implements Serializable {
         barChart.setLegendPosition("ne");
 	}
 	
-	public void createBarGenderModel(String consoleName, BarChartModel barChart) {		
+	public void createBarModelQuantityGameGenrePerConsole(String consoleName, BarChartModel barChart) {		
 		ChartSeries series = new ChartSeries();
 		
 		series.setLabel("Quantity");
@@ -108,22 +127,16 @@ public class ChartBean implements Serializable {
         barChart.setLegendPosition("ne");
 	}
 	
-	public void createBarGenderModelPS2() {
-		barPS2Chart = new BarChartModel();
-		
-		ChartSeries series = new ChartSeries();
-		series.setLabel("Genre");
-		
-		for(Object[] data : listGenreConsole) {
-			if("Playstation 2".equals(data[2])) {
-				series.set(data[0], (Long) data[3]);
+	public void createPieModelGameUnitsSold(String consoleName, PieChartModel pieChart) {
+				
+		for(Game data : listGames) {
+			if(consoleName.equals(data.getGameConsole().getName())) {
+				pieChart.set(data.getName(), data.getUnitsSold());
 			}
 		}
 		
-		barPS2Chart.addSeries(series);
-		barPS2Chart.setTitle("Testing");
-        barPS2Chart.setLegendPosition("ne");
-        barPS2Chart.setShowPointLabels(true);
+		pieChart.setTitle("Unidade Vendidas x Jogo");
+		pieChart.setLegendPosition("ne");
 	}
 	
 	public void search() {
@@ -150,12 +163,12 @@ public class ChartBean implements Serializable {
 		return selectedChartOption != null && selectedChartOption.equals(chartType);
 	}
 	
-	public void chartOptionGameGenre(String chartType) {
-		selectedChartOptionGame = chartType;
+	public boolean isChartSelectedGameGenre(String chartType) {
+		return selectedChartOptionGameGenre != null && selectedChartOptionGameGenre.equals(chartType);
 	}
 	
-	public boolean isChartSelectedGameGenre(String chartType) {
-		return selectedChartOptionGame != null && selectedChartOptionGame.equals(chartType);
+	public boolean isChartSelectedGameUnitsSold(String chartType) {
+		return selectedChartOptionGameUnitsSold != null && selectedChartOptionGameUnitsSold.equals(chartType);
 	}
 	
 	public Game getGame() {
@@ -214,12 +227,21 @@ public class ChartBean implements Serializable {
 		this.selectedChartOption = selectedChart;
 	}
 	
-	public String getSelectedChartOptionGame() {
-		return selectedChartOptionGame;
+
+	public String getSelectedChartOptionGameUnitsSold() {
+		return selectedChartOptionGameUnitsSold;
 	}
 
-	public void setSelectedChartOptionGame(String selectedChartOptionGame) {
-		this.selectedChartOptionGame = selectedChartOptionGame;
+	public void setSelectedChartOptionGameUnitsSold(String selectedChartOptionGameUnitsSold) {
+		this.selectedChartOptionGameUnitsSold = selectedChartOptionGameUnitsSold;
+	}
+
+	public String getSelectedChartOptionGameGenre() {
+		return selectedChartOptionGameGenre;
+	}
+	
+	public void setSelectedChartOptionGameGenre(String selectedChartOptionGameGenre) {
+		this.selectedChartOptionGameGenre = selectedChartOptionGameGenre;
 	}
 
 	public BarChartModel getBarPS1Chart() {
@@ -245,5 +267,30 @@ public class ChartBean implements Serializable {
 	public BarChartModel getBar3DSChart() {
 		return bar3DSChart;
 	}
+
+	public PieChartModel getPieUnitsSoldPS1Chart() {
+		return pieUnitsSoldPS1Chart;
+	}
+
+	public PieChartModel getPieUnitsSoldPS2Chart() {
+		return pieUnitsSoldPS2Chart;
+	}
+
+	public PieChartModel getPieUnitsSoldDSChart() {
+		return pieUnitsSoldDSChart;
+	}
+
+	public PieChartModel getPieUnitsSoldGBAChart() {
+		return pieUnitsSoldGBAChart;
+	}
+
+	public PieChartModel getPieUnitsSoldSNESChart() {
+		return pieUnitsSoldSNESChart;
+	}
+
+	public PieChartModel getPieUnitsSold3DSChart() {
+		return pieUnitsSold3DSChart;
+	}
+
 	
 }
