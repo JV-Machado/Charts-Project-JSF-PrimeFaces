@@ -32,6 +32,13 @@
 						class="ui-icon fa fa-ellipsis-v" />
 					</span>
 
+					<p:commandButton value="Novo Jogo" icon="fa fa-plus" actionListener="#{chartBean.startNewGameRegister}" oncomplete="PrimeFaces.widgets.registerDialogWidgetVar.show()" 
+					update="registerDialog" process="@this"/>
+
+					<span class="ui-separator"> <span
+						class="ui-icon fa fa-ellipsis-v" />
+					</span>
+					
 					<p:commandButton value="Unidades Vendidas (Consoles)" icon="fa fa-bar-chart-o" oncomplete="PrimeFaces.widgets.consoleDialogWidgetVar.show()" update="consoleDialog"
 					/>
 					<span class="ui-separator"> <span
@@ -161,10 +168,33 @@
 					</p:outputPanel>
 				</h:panelGrid>
 			</p:dialog>
+			
+			<p:dialog id="registerDialog" header="Inserir novo Jogo" widgetVar="registerDialogWidgetVar" modal="true" resizable="false" closeOnEscape="true">
+				<h:panelGrid columns="2" rendered="#{chartBean.game ne null}">
+					<p:outputLabel value="Jogo: " for="gameInput"/>
+					<p:inputText id="gameInput" value="#{chartBean.game.name}"/>
+					
+					<p:outputLabel value="Gênero: " for="genreInput"/>
+					<p:inputText id="genreInput" value="#{chartBean.game.genre}"/>
+					
+					<p:outputLabel value="Data de Lançamento: " for="releaseYearInput"/>
+					<p:inputText id="releaseYearInput" value="#{chartBean.game.releaseYear}"/>
+					
+					<p:outputLabel value="Unidades Vendidas: " for="unitsSoldInput"/>
+					<p:inputText id="unitsSoldInput" value="#{chartBean.game.unitsSold}"/>
+					
+					<p:outputLabel value="Console: "/>
+					<p:selectOneMenu>
+						<f:selectItem itemLabel="Selecione..."/>
+						<f:selectItems value="#{chartBean.listConsoles}" var="gameConsole" itemLabel="#{gameConsole.name}" itemValue="#{gameConsole}"/>
+					</p:selectOneMenu>
+					
+					<p:commandButton value="Salvar" actionListener="#{chartBean.save}" oncomplete="PrimeFaces.widgets.registerDialogWidgetVar.hide()" process="registerDialog"
+					update="gamesDataTable"/>
+				</h:panelGrid>
+			</p:dialog>
 		</h:form>
 	</div>
-
-
-
+	
 </h:body>
 </html>

@@ -29,6 +29,10 @@ public class GameRepository implements Serializable {
 		return query.getResultList();
 	}
 	
+	public Game save(Game game) {
+		return manager.merge(game);
+	}
+	
 	public List<Object[]> searchGenreQuantity() {
 	    TypedQuery<Object[]> query = manager.createQuery(
 	    		"SELECT g.genre, g.gameConsole.id, g.gameConsole.name, COUNT(g) FROM Game g GROUP BY g.genre, g.gameConsole.id, g.gameConsole.name", 

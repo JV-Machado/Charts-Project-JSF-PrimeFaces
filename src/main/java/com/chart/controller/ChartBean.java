@@ -16,6 +16,7 @@ import com.chart.model.Game;
 import com.chart.model.GameConsole;
 import com.chart.repository.GameConsoleRepository;
 import com.chart.repository.GameRepository;
+import com.chart.service.GameService;
 
 @Named
 @ViewScoped
@@ -27,6 +28,9 @@ public class ChartBean implements Serializable {
 
 	@Inject
 	private GameConsoleRepository consoleRepository;
+	
+	@Inject
+	private GameService gameService;
 	
 	private Game game;
 
@@ -137,6 +141,16 @@ public class ChartBean implements Serializable {
 		
 		pieChart.setTitle("Unidade Vendidas x Jogo");
 		pieChart.setLegendPosition("ne");
+	}
+	
+	public void startNewGameRegister() {
+		game = new Game();
+	}
+	
+	public void save() {
+		gameService.save(game);
+		
+		allGames();
 	}
 	
 	public void search() {
