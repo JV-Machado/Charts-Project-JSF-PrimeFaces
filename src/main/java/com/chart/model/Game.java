@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="tb_game")
@@ -21,22 +23,30 @@ public class Game implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
 	private String name;
 	
+	@NotNull
 	@Column(name="game_genre")
 	private String genre;
 	
+	@NotNull
+	@Digits(integer = 4, fraction = 0)
 	@Column(name="release_year")
 	private Integer releaseYear;
 	
+	@NotNull
+	@Digits(integer = 10, fraction = 0)
 	@Column(name="units_sold")
 	private Integer unitsSold;
+	
 //	@ManyToMany
 //	@JoinTable(name="tb_console_game", 
 //		joinColumns = @JoinColumn(name="game_id"), 
 //		inverseJoinColumns = @JoinColumn(name="console_id"))
 //	private GameConsole gameConsole;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="game_console_id")
 	private GameConsole gameConsole;

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.convert.Converter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -64,6 +65,8 @@ public class ChartBean implements Serializable {
 	private List<GameConsole> listConsoles;
 	
 	private List<Object[]> listGenreConsole;
+	
+	private Converter gameConsoleConverter;
 
 	@PostConstruct
     public void init() {
@@ -87,6 +90,7 @@ public class ChartBean implements Serializable {
         createPieModelGameUnitsSold("SNES", pieUnitsSoldSNESChart);
         createPieModelGameUnitsSold("Nintendo 3Ds", pieUnitsSold3DSChart);
 
+        gameConsoleConverter = new GameConsoleConverter(listConsoles);
     }
 	
 	public void createPieModel() {
@@ -304,6 +308,14 @@ public class ChartBean implements Serializable {
 
 	public PieChartModel getPieUnitsSold3DSChart() {
 		return pieUnitsSold3DSChart;
+	}
+
+	public Converter getGameConsoleConverter() {
+		return gameConsoleConverter;
+	}
+
+	public void setGameConsoleConverter(Converter gameConsoleConverter) {
+		this.gameConsoleConverter = gameConsoleConverter;
 	}
 
 	

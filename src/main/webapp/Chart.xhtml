@@ -163,7 +163,7 @@
 						</p:panel>
 						
 						<p:panel rendered="#{chartBean.isChartSelectedGameUnitsSold('Nintendo 3Ds')}">
-							<p:chart type="pie" model="#{chartBean.pieUnitsSold3DSChart}" style="widtpie00px;height:400px;"/>
+							<p:chart type="pie" model="#{chartBean.pieUnitsSold3DSChart}" style="width:800px;height:400px;"/>
 						</p:panel>
 					</p:outputPanel>
 				</h:panelGrid>
@@ -184,12 +184,12 @@
 					<p:inputText id="unitsSoldInput" value="#{chartBean.game.unitsSold}"/>
 					
 					<p:outputLabel value="Console: "/>
-					<p:selectOneMenu>
+					<p:selectOneMenu value="#{chartBean.game.gameConsole}" converter="#{chartBean.gameConsoleConverter}">
 						<f:selectItem itemLabel="Selecione..."/>
 						<f:selectItems value="#{chartBean.listConsoles}" var="gameConsole" itemLabel="#{gameConsole.name}" itemValue="#{gameConsole}"/>
 					</p:selectOneMenu>
 					
-					<p:commandButton value="Salvar" actionListener="#{chartBean.save}" oncomplete="PrimeFaces.widgets.registerDialogWidgetVar.hide()" process="registerDialog"
+					<p:commandButton value="Salvar" actionListener="#{chartBean.save}" oncomplete="if (!args.validationFailed) PrimeFaces.widgets.registerDialogWidgetVar.hide()" process="registerDialog"
 					update="gamesDataTable"/>
 				</h:panelGrid>
 			</p:dialog>
