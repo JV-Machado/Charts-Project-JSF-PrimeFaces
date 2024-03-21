@@ -21,7 +21,8 @@
 			<f:viewAction action="#{chartBean.quantityGamesGenrePerConsole}"/>
 		</f:metadata>
 
-		<h:form>
+		<h:form id="frm">
+			<p:messages id="messages"/>
 			<p:toolbar>
 				<f:facet name="left">
 					<p:inputText placeholder="Pesquisar por Jogo" size="20" value="#{chartBean.searchTerm}"/>
@@ -33,7 +34,9 @@
 					</span>
 
 					<p:commandButton value="Novo Jogo" icon="fa fa-plus" actionListener="#{chartBean.startNewGameRegister}" oncomplete="PrimeFaces.widgets.registerDialogWidgetVar.show()" 
-					update="registerDialog" process="@this"/>
+					update="registerDialog" process="@this">
+						<p:resetInput target="registerDialog"></p:resetInput>
+					</p:commandButton>
 
 					<span class="ui-separator"> <span
 						class="ui-icon fa fa-ellipsis-v" />
@@ -170,7 +173,10 @@
 			</p:dialog>
 			
 			<p:dialog id="registerDialog" header="Inserir novo Jogo" widgetVar="registerDialogWidgetVar" modal="true" resizable="false" closeOnEscape="true">
-				<h:panelGrid columns="2" rendered="#{chartBean.game ne null}">
+			
+				<p:messages id="dialogMessages"/>
+				<p:defaultCommand target="saveCommandButton" scope="registerDialog"/>
+				<h:panelGrid id="dialogPanelGrid" columns="2" rendered="#{chartBean.game ne null}">
 					<p:outputLabel value="Jogo: " for="gameInput"/>
 					<p:inputText id="gameInput" value="#{chartBean.game.name}"/>
 					
@@ -183,14 +189,14 @@
 					<p:outputLabel value="Unidades Vendidas: " for="unitsSoldInput"/>
 					<p:inputText id="unitsSoldInput" value="#{chartBean.game.unitsSold}"/>
 					
-					<p:outputLabel value="Console: "/>
-					<p:selectOneMenu value="#{chartBean.game.gameConsole}" converter="#{chartBean.gameConsoleConverter}">
+					<p:outputLabel value="Console: " for="gameConsoleInput"/>
+					<p:selectOneMenu id="gameConsoleInput" value="#{chartBean.game.gameConsole}" converter="#{chartBean.gameConsoleConverter}">
 						<f:selectItem itemLabel="Selecione..."/>
 						<f:selectItems value="#{chartBean.listConsoles}" var="gameConsole" itemLabel="#{gameConsole.name}" itemValue="#{gameConsole}"/>
 					</p:selectOneMenu>
 					
-					<p:commandButton value="Salvar" actionListener="#{chartBean.save}" oncomplete="if (!args.validationFailed) PrimeFaces.widgets.registerDialogWidgetVar.hide()" process="registerDialog"
-					update="gamesDataTable"/>
+					<p:commandButton id="saveCommandButton" value="Salvar" actionListener="#{chartBean.save}" oncomplete="if (!args.validationFailed) PrimeFaces.widgets.registerDialogWidgetVar.hide()" process="registerDialog"
+					update="dialogMessages dialogPanelGrid"/>
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>

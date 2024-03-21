@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="tb_game")
 public class Game implements Serializable{
@@ -23,11 +25,12 @@ public class Game implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
+	@NotEmpty
+	@Column(nullable = false, length = 80)
 	private String name;
 	
-	@NotNull
-	@Column(name="game_genre")
+	@NotEmpty
+	@Column(name="game_genre", nullable = false, length = 80)
 	private String genre;
 	
 	@NotNull

@@ -1,6 +1,7 @@
 package com.chart.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +10,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
+import org.primefaces.context.PrimeRequestContext;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
@@ -18,6 +21,7 @@ import com.chart.model.GameConsole;
 import com.chart.repository.GameConsoleRepository;
 import com.chart.repository.GameRepository;
 import com.chart.service.GameService;
+import com.chart.util.FacesMessages;
 
 @Named
 @ViewScoped
@@ -32,6 +36,9 @@ public class ChartBean implements Serializable {
 	
 	@Inject
 	private GameService gameService;
+	
+	@Inject
+	private FacesMessages messages;
 	
 	private Game game;
 
@@ -153,6 +160,10 @@ public class ChartBean implements Serializable {
 	
 	public void save() {
 		gameService.save(game);
+		
+		messages.info("Jogo salvo com sucesso!");
+		
+		PrimeFaces.current().ajax().update(Arrays.asList("frm:gamesDataTable", "frm:messages"));
 		
 		allGames();
 	}
